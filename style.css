@@ -1,0 +1,180 @@
+/* 1. बेसिक रीसेट और फुल स्क्रीन */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    overflow: hidden;
+    background-color: #87ceeb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+#game-canvas {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* 2. ऊपर दाएं कोने में गोल लोकेशन मैप (GPS) */
+#location-map {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 3px solid #f59e0b;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+#gps-arrow {
+    color: #ef4444;
+    font-size: 24px;
+    font-weight: bold;
+    transform-origin: center;
+    transition: transform 0.2s ease;
+}
+
+#location-text {
+    position: absolute;
+    bottom: -25px;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* 3. ऊपर बाएं कोने में स्कोर और पैसे */
+#scoreboard {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(15, 23, 42, 0.85);
+    color: #22c55e;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #22c55e;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 4. गाड़ी में बैठने/उतरने का एक्शन बटन */
+.action-btn {
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    background: #f59e0b;
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+/* 5. गोल बटन स्टाइलिंग */
+.controls-container {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.btn-group {
+    display: flex;
+    gap: 15px;
+    pointer-events: auto;
+}
+
+.btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* बटनों के रंग */
+#btn-left, #btn-right { background: #1e293b; }
+#btn-gas { background: #16a34a; }
+#btn-reverse { background: #dc2626; }
+
+/* 6. क्रोम जैसा रिपल/लहर इफ़ेक्ट */
+.ripple::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.4s, opacity 0.8s;
+}
+
+.ripple:active::after {
+    transform: scale(0, 0);
+    opacity: 0.4;
+    transition: 0s;
+}
+
+/* 7. JCB हाइड्रोलिक कंट्रोल्स (4 तीरों वाले गोल बटन) */
+.jcb-controls-container {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+    z-index: 10;
+}
+
+.jcb-btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 60px);
+    gap: 10px;
+}
+
+.jcb-btn {
+    width: 55px;
+    height: 55px;
+    background: #eab308;
+    color: #000;
+    border: 2px solid #ffffff;
+    font-size: 20px;
+}
