@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Desi Tractor & JCB Simulator 3D</title>
+    
+    <!-- CSS फ़ाइल लिंक -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js 3D Engine Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- 1. 3D गेम रेंडरिंग स्क्रीन -->
+    <div id="game-canvas"></div>
+
+    <!-- 2. लोकेशन मैप (ऊपर दाएं कोने में GPS) -->
+    <div id="location-map">
+        <div id="gps-arrow">▲</div>
+        <span id="location-text">मिशन: मिट्टी लोड करें</span>
+    </div>
+
+    <!-- 3. स्कोर और पैसे का डिब्बा (ऊपर बाएं कोने में) -->
+    <div id="scoreboard">
+        💰 पैसे: <span id="money-count">₹0</span>
+    </div>
+
+    <!-- 4. वाहन में बैठने / उतरने का बटन -->
+    <button class="action-btn" id="btn-enter-exit">
+        🚶‍♂️/🚜 बैठें
+    </button>
+
+    <!-- 5. ट्रैक्टर ड्राइविंग कंट्रोल्स (नीचे) -->
+    <div class="controls-container" id="driving-controls">
+        <!-- बाएं/दाएं मोड़ने के बटन -->
+        <div class="btn-group">
+            <button class="btn ripple" id="btn-left">◀</button>
+            <button class="btn ripple" id="btn-right">▶</button>
+        </div>
+        <!-- रेस और ब्रेक/रिवर्स के बटन -->
+        <div class="btn-group">
+            <button class="btn ripple" id="btn-reverse">▼</button>
+            <button class="btn ripple" id="btn-gas">▲</button>
+        </div>
+    </div>
+
+    <!-- 6. JCB हाइड्रोलिक कंट्रोल्स (सूंड और मिट्टी उठाने के लिए 4 तीर वाले बटन) -->
+    <div class="jcb-controls-container" id="jcb-controls">
+        <div class="jcb-btn-grid">
+            <button class="btn jcb-btn ripple" id="jcb-arm-up" title="सूंड ऊपर">▲</button>
+            <button class="btn jcb-btn ripple" id="jcb-arm-down" title="सूंड नीचे">▼</button>
+            <button class="btn jcb-btn ripple" id="jcb-bucket-dig" title="मिट्टी कोड़ें">◤</button>
+            <button class="btn jcb-btn ripple" id="jcb-bucket-dump" title="मिट्टी गिराएं">◢</button>
+        </div>
+    </div>
+
+    <!-- JavaScript फ़ाइल लिंक -->
+    <script src="script.js"></script>
+</body>
+</html>
